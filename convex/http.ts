@@ -3,11 +3,11 @@ import { WebhookEvent } from "@clerk/nextjs/server";
 import { Webhook } from "svix";
 import { api } from "./_generated/api";
 import { httpAction } from "./_generated/server";
-import { GoogleGenerativeAI } from "@google/generative-ai";
+// import { GoogleGenerativeAI } from "@google/generative-ai";
 
 const http = httpRouter();
 
-const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
+// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY!);
 
 http.route({
   path: "/clerk-webhook",
@@ -55,7 +55,7 @@ http.route({
       const name = `${first_name || ""} ${last_name || ""}`.trim();
 
       try {
-        await ctx.runMutation(api.users.syncUser, {
+        await ctx.runMutation(api.users.syncUser,{
           email,
           name,
           image: image_url,
@@ -140,14 +140,14 @@ http.route({
 
       console.log("Payload is here:", payload);
 
-      const model = genAI.getGenerativeModel({
-        model: "gemini-2.0-flash-001",
-        generationConfig: {
-          temperature: 0.4, // lower temperature for more predictable outputs
-          topP: 0.9,
-          responseMimeType: "application/json",
-        },
-      });
+    //   const model = genAI.getGenerativeModel({
+    //     model: "gemini-2.0-flash-001",
+    //     generationConfig: {
+    //       temperature: 0.4, // lower temperature for more predictable outputs
+    //       topP: 0.9,
+    //       responseMimeType: "application/json",
+    //     },
+    //   });
 
       const workoutPrompt = `You are an experienced fitness coach creating a personalized workout plan based on:
       Age: ${age}
