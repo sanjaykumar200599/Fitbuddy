@@ -42,7 +42,8 @@ http.route({
       return new Response("Error occurred", { status: 400 });
     }
 
-    const eventType=evt.type;if(eventType==="user.created"){
+    const eventType=evt.type;
+    if(eventType==="user.created"){
         const { id, first_name, last_name, image_url, email_addresses } = evt.data;
 
         const email = email_addresses[0].email_address;
@@ -61,7 +62,9 @@ http.route({
             return new Response("Error creating user", { status: 500 });
         }
     }
+    return new Response("Webhooks processed succesfully",{ status: 200 })
 
 
     })
 })
+export default http;
