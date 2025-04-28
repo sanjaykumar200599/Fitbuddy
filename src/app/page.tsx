@@ -1,6 +1,6 @@
 import TerminalOverlay from "@/components/TerminalOverlay";
 import { Button } from "@/components/ui/button";
-// import UserPrograms from "@/components/UserPrograms";
+import UserPrograms from "@/components/UserPrograms";
 import { ArrowRightIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -116,7 +116,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* <UserPrograms /> */}
+      <UserPrograms />
     </div>
   );
 };
