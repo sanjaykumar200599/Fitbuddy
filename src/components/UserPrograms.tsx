@@ -10,7 +10,7 @@ import {
   AppleIcon,
   ShieldIcon,
 } from "lucide-react";
-// import { USER_PROGRAMS } from "@/constants";
+import { USER_PROGRAMS } from "@/constants";
 
 const UserPrograms = () => {
   return (
@@ -196,7 +196,7 @@ const UserPrograms = () => {
             </Button>
           </Link>
           <p className="text-muted-foreground mt-4">
-            Join 500+ users with AI-customized fitness programs
+            Join 1000+ users with AI-customized fitness programs
           </p>
         </div>
       </div>
