@@ -4,9 +4,19 @@ import { SignInButton, SignUpButton, UserButton, useUser } from "@clerk/nextjs";
 import { DumbbellIcon, HomeIcon, UserIcon, ZapIcon } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { isSignedIn } = useUser();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  if (!isMounted) {
+    return null; // or loading skeleton
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/60 backdrop-blur-md border-b border-border py-3">
@@ -17,7 +27,7 @@ const Navbar = () => {
             <ZapIcon className="w-4 h-4 text-primary" />
           </div>
           <span className="text-xl font-bold font-mono">
-            code<span className="text-primary">flex</span>.ai
+            Fit<span className="text-primary">Fusion</span>.ai
           </span>
         </Link>
 
