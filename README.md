@@ -1,6 +1,7 @@
 Deployment Link : https://ai-fitness-trainer-rose.vercel.app/
 
-📌 Project Overview
+📌 Project Overview:
+
 AI Fitness Trainer is a web application that helps users generate personalized workout and diet plans based on their input (duration, goals, preferences, etc.). It leverages AI to provide structured plans for a healthier lifestyle.
 
 🧠 Features
