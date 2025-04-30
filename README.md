@@ -22,7 +22,7 @@ AI Fitness Trainer is a web application that helps users generate personalized w
 🛠️ Tech Stack
 Frontend: Next.js, Tailwind CSS, Shadcn UI
 
-AI Interaction: Vapi
+AI Interaction: Vapi, Gemini
 
 Backend: Convex Database
 
