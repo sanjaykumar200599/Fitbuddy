@@ -32,9 +32,10 @@ export const createPlan = mutation({
     isActive: v.boolean(),
   },
   handler: async (ctx, args) => {
+    const trimmedUserId = args.userId.trim();
     const activePlans = await ctx.db
       .query("plans")
-      .withIndex("by_user_id", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user_id", (q) => q.eq("userId",trimmedUserId))
       .filter((q) => q.eq(q.field("isActive"), true))
       .collect();
 
@@ -42,7 +43,10 @@ export const createPlan = mutation({
       await ctx.db.patch(plan._id, { isActive: false });
     }
 
-    const planId = await ctx.db.insert("plans", args);
+    const planId = await ctx.db.insert("plans", {
+      ...args,
+      userId: trimmedUserId,
+    });
 
     return planId;
   },
@@ -51,9 +55,10 @@ export const createPlan = mutation({
 export const getUserPlans = query({
   args: { userId: v.string() },
   handler: async (ctx, args) => {
+    const trimmedUserId = args.userId.trim();
     const plans = await ctx.db
       .query("plans")
-      .withIndex("by_user_id", (q) => q.eq("userId", args.userId))
+      .withIndex("by_user_id", (q) => q.eq("userId",trimmedUserId))
       .order("desc")
       .collect();
 
